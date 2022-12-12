@@ -1,18 +1,16 @@
-import { render, screen } from "@testing-library/react";
-import Greet from "./greet";
+import { render, screen } from '@testing-library/react'
+import { Greet } from './Greet'
 
-//test.only test.skip describe.skip describe.only
+describe('Greet', () => {
+  test('renders correctly', () => {
+    render(<Greet />)
+    const textElement = screen.getByText('Hello Guest')
+    expect(textElement).toBeInTheDocument()
+  })
 
-describe("greet", () => {
-  test("renders correctly", () => {
-    render(<Greet />);
-    const textElement = screen.getByText(/Hello/i);
-    expect(textElement).toBeInTheDocument();
-  });
-
-  test("with name", () => {
-    render(<Greet name="mayowa" />);
-    const textElement = screen.getByText(/Hello/i);
-    expect(textElement).toBeInTheDocument();
-  });
-});
+  test('renders a name', () => {
+    render(<Greet name="Vishwas" />)
+    const textElement = screen.getByText('Hello Vishwas')
+    expect(textElement).toBeInTheDocument()
+  })
+})
